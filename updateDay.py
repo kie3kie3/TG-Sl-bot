@@ -10,6 +10,9 @@ def make_shedule(now, db, wday):
     t = time.localtime(now)
     x = (t.tm_year, t.tm_mon, t.tm_mday, 0, 0, 0, t.tm_wday, t.tm_yday, t.tm_isdst)
     now = time.mktime(x)
+    for i in config.prazdnik:
+        if i[0] == t.tm_mday and i[1] == t.tm_mon:
+            wday = 5
     if wday == 6 or wday == 5:  
         wday = 1
     else:
@@ -33,8 +36,7 @@ def day_update(now, cur):
     wday = cur.tm_wday 
     db = get_info()
     if wday == 6:
-        admin.sendWeek()
-        admin.clear()
+        admin.sendWeek(True)
     for i in config.wait_list:
         db['day_late'][i] = [False, 0, ""]
     db = make_shedule(now, db, wday)

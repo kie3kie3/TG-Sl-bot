@@ -58,7 +58,7 @@ def markup_txt(message):
         bot.send_message(message.chat.id, message.chat.id)
     elif message.chat.id in config.admins:
         if message.text == 'Опоздания':
-            admin.sendWeek()
+            admin.sendWeek(False)
     else:
         bot.send_message(message.chat.id, 'Чаво?')
 

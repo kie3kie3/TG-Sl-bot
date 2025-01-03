@@ -1,6 +1,7 @@
 from getter import get_token
 
 
+prazdnik = [[31,12], [1,1], [2, 1], [3, 1], [6, 1], [7, 1], [8, 1]]
 bot = get_token()
 admins = [
     1111687369,
